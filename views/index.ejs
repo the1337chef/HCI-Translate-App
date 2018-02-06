@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Translate App</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <script>
+      window.onload=function () {
+      var objDiv = document.getElementById("right");
+      objDiv.scrollTop = objDiv.scrollHeight;
+      }
+    </script>
+    <div class="container">
+        <div class = "left">
+            <form action="/" method="post">
+              <h1 class="targetBlurb">Select Target Language</h1>
+              <select name="lang" class="languageSelect">
+                <% if(languages != null){ %>
+                  <% for(var i = 0; i < languages.length; i++){ %>
+                    <option value=<%= abbr[i] %> <%= selected[i] %> ><%= languages[i] %></option>
+                  <% } %>
+                <% } %>
+              </select>
+              <textarea name="string" placeholder="Type in desired language" class="textEntry"></textarea>
+              <input type="submit" value="Translate" class="enterButton">
+            </form>
+            <div class="survey">
+              When you are finished,<br> please complete <a href="https://ufl.qualtrics.com/jfe/form/SV_06qYSKxTvkQFlzv">this survey</a>
+            </div>
+        </div>
+      <div id= "right">
+        <% if(code != null){ %>
+            <% for(var i = 0; i < code.length; i++){ %>
+              <div class="entry">
+                <p><%= code[i] %></p>
+                <% i++ %>
+                <p><%= code[i] %></p>
+              </div>
+            <% } %>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
